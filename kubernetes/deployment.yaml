@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-test2-d
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-test2
+  template:
+    metadata:
+      labels:
+        app: kube-test2
+    spec:
+      containers:
+        - name: kube-test2
+          image: grimreapermortis/kubernetes-test:0.0.4
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

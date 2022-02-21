@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kube-test2-i
+  namespace: demo
+spec:
+  tls:
+    - hosts:
+        - mortis-grimreaper.ddns.net
+      secretName: mortis-tls
+  rules:
+    - host: mortis-grimreaper.ddns.net
+      http:
+        paths:
+          - backend:
+              serviceName: kube-test2-s
+              servicePort: 8889
+            path: /test2
